@@ -9,7 +9,6 @@ require.config({
     status: 'models/status',
     task: 'models/task',
     project: 'models/project',
-    project: 'models/project',
     statusTest: 'tests/models/statusTest',
     projectTest: 'tests/models/projectTest',
     taskTest: 'tests/models/taskTest'
