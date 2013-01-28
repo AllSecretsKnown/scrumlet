@@ -32,7 +32,7 @@ require.config({
 | It will require all testcases and run them
 |--------------------------------------------------------------------------
 */
-define(['statusTest', 'projectTest', 'taskTest'],function(StatusTest, ProjectTest, TaskTest){
+define(['tests/models/statusTest', 'tests/models/projectTest', 'tests/models/taskTest'],function(StatusTest, ProjectTest, TaskTest){
 
 	var jasmineEnv = jasmine.getEnv();
   jasmineEnv.updateInterval = 1000;
