@@ -40,9 +40,11 @@ define(['backbone', 'jquery', 'underscore', 'handlebars', 'project', 'editProjec
 
 		//Function to edit Project
 		editProject: function(e){
-			e.preventDefault();
+			
 			//Trigger an Event
-			this.trigger('project:edit', this.model);
+			console.log('eventet körs på projectview');
+			this.$el.trigger('project:edit', this.model);
+			//this.trigger('project:edit', this.model);
 		}	
 	});
 });

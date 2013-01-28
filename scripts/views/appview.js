@@ -14,7 +14,7 @@ define(['backbone', 'jquery', 'underscore','projectsView', 'addProjectView'], fu
 			$('#allProjects').append( projectsView.el );
 
 			//Create a new AddProjecView and Inject the collection
-			this.addProjectView = new AddProjectView({ collection: this.collection });
+			var addProjectView = new AddProjectView({ collection: this.collection });
 
 			//Listen for Edit event
 			projectsView.on('project:edit', this.editProject, this);
@@ -23,7 +23,7 @@ define(['backbone', 'jquery', 'underscore','projectsView', 'addProjectView'], fu
 		editProject: function(project){
 			//create a new edit view and bind the model
 			var editProjectView = new EditProjectView({ model: project });
-
+			console.log('körs');
 			//apend form to the DOM
 			$('#main_div').append(editProjectView.el);
 		},
