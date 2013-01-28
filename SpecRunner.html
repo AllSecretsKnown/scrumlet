@@ -16,10 +16,7 @@
 
   <script type="text/javascript">
   require(['tests/models/statusTest', 'tests/models/projectTest'], function(StatusTest, ProjectTest){
-      
-  });
-    (function(){
-        var jasmineEnv = jasmine.getEnv();
+      var jasmineEnv = jasmine.getEnv();
         jasmineEnv.updateInterval = 1000;
 
         var htmlReporter = new jasmine.HtmlReporter();
@@ -42,7 +39,7 @@
         function execJasmine() {
           jasmineEnv.execute();
         };
-      })();
+  });
   </script>
 
 <!-- CODE FROM TESTEM
