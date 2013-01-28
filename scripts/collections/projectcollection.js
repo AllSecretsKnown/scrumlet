@@ -1,5 +1,5 @@
 //Project Model
-define(['backbone', 'jquery','underscore', 'localStorage', 'project'], function(Backbone, $, _, LocalStorage, Project){
+define(['backbone', 'jquery', 'underscore', 'localStorage', 'project'], function(Backbone, $, _, LocalStorage, Project){
 	return Backbone.Collection.extend({
 		model: Project,
 		url: '/projects',

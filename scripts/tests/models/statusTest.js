@@ -1,4 +1,4 @@
-require(['status'], function(Status){
+define(['status'], function(Status){
 	describe('A Status Model test suit', function() {
 				
 		//Set up a model to be used by the tests

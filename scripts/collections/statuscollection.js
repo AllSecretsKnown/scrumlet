@@ -1,4 +1,4 @@
-define(['backbone', 'jquery','underscore', 'status'], function(Backbone, $, _, Status){
+define(['backbone', 'jquery', 'underscore', 'status'], function(Backbone, $, _, Status){
 	return Backbone.Collection.extend({
 		//Default values
 		defaults: {

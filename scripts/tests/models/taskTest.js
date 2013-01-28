@@ -1,4 +1,4 @@
-require(['task'], function(Task){
+define(['task'], function(Task){
 	describe('A Task Model test suit', function() {
 				
 		//Set up a model to be used by the tests

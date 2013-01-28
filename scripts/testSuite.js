@@ -1,34 +1,51 @@
+require.config({
+  deps: ['testSuite'],
+  paths: {
+    jquery: 'vendor/jquery/dist/jquery',
+    underscore: 'vendor/underscore/underscore',
+    backbonePure: 'vendor/backbone/backbonePure',
+    backbone: 'vendor/backbone/backboneLoader',
+    relational: 'vendor/backbone-relational/relational',
+    localStorage: 'vendor/localstorage/backbone.localStorage',  
+    status: 'models/status',
+    task: 'models/task',
+    project: 'models/project',
+    project: 'models/project',
+    statusTest: 'tests/models/statusTest',
+    projectTest: 'tests/models/projectTest',
+    taskTest: 'tests/models/taskTest'
+  },
+  shim: {
+    backbonePure: {
+        deps: ['jquery', 'underscore'],
+          exports: 'Backbone'
+      },
+      relational: {
+        deps: ['backbonePure', 'underscore']
+      },
+      localStorage: {
+        deps: ['backbonePure', 'underscore']
+      }
+  }
+});
 /*
 |--------------------------------------------------------------------------
 | Test Suite
 | It will require all testcases and run them
 |--------------------------------------------------------------------------
 */
-require(['tests/models/statusTest', 'projectTest'], function(StatusTest, ProjectTest){
-      console.log(StatusTest);
-      console.log(ProjectTest);
-      
-      var jasmineEnv = jasmine.getEnv();
-        jasmineEnv.updateInterval = 1000;
+define(['statusTest', 'projectTest', 'taskTest'],function(StatusTest, ProjectTest, TaskTest){
 
-        var htmlReporter = new jasmine.HtmlReporter();
+	var jasmineEnv = jasmine.getEnv();
+  jasmineEnv.updateInterval = 1000;
 
-        jasmineEnv.addReporter(htmlReporter);
+  var htmlReporter = new jasmine.HtmlReporter();
 
-        jasmineEnv.specFilter = function(spec) {
-          return htmlReporter.specFilter(spec);
-        };
+  jasmineEnv.addReporter(htmlReporter);
 
-        var currentWindowOnload = window.onload;
+  jasmineEnv.specFilter = function(spec) {
+    return htmlReporter.specFilter(spec);
+  };
 
-        window.onload = function() {
-          if (currentWindowOnload) {
-            currentWindowOnload();
-          }
-          execJasmine();
-        };
-
-        function execJasmine() {
-          jasmineEnv.execute();
-        };
-  });
+  jasmineEnv.execute();
+});
