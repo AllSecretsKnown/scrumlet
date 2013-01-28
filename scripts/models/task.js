@@ -1,4 +1,4 @@
-define(['backbone','jquery', 'underscore', 'relational', 'status','project'], function(Backbone, $, _, Relational, Status, Project){
+define(['backbone','jquery', 'underscore', 'relational'], function(Backbone, $, _, Relational){
 	return Backbone.RelationalModel.extend({
 		defaults: {
 			task_name: 'Give me a name',
