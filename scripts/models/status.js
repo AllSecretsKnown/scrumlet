@@ -1,4 +1,4 @@
-define(['backbone','jquery', 'underscore', 'relational'], function(Backbone, $,  _, Relational){
+define(['backbone', 'jquery', 'underscore'], function(Backbone, $,  _){
 	return Backbone.RelationalModel.extend({
 		
 		//Validate input before create or update a model

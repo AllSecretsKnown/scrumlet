@@ -3,7 +3,8 @@ require.config({
 	paths: {
 		jquery: 'vendor/jquery/dist/jquery',
 		underscore: 'vendor/underscore/underscore',
-		backbone: 'vendor/backbone/backbone',
+		backbonePure: 'vendor/backbone/backbonePure',
+		backbone: 'vendor/backbone/backboneLoader',
 		relational: 'vendor/backbone-relational/relational',
 		localStorage: 'vendor/localstorage/backbone.localStorage',
 		handlebars: 'vendor/handlebars/handlebars',		
@@ -22,15 +23,15 @@ require.config({
 		router: 'router'
 	},
 	shim: {
-		backbone: {
-    		deps: ['underscore', 'jquery' ],
+		backbonePure: {
+    		deps: ['jquery', 'underscore'],
       		exports: 'Backbone'
     	},
     	relational: {
-    		deps: ['backbone']
+    		deps: ['backbonePure', 'underscore']
     	},
     	localStorage: {
-    		deps: ['backbone']
+    		deps: ['backbonePure', 'underscore']
     	}
 	}
 });
