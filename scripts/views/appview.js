@@ -3,7 +3,8 @@
 | App View
 |--------------------------------------------------------------------------
 */
-define(['backbone', 'jquery', 'underscore','projectsView', 'addProjectView'], function(Backbone, $, _, ProjectsView, AddProjectView){
+define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterProjectView'], 
+	function(Backbone, $, _, Project, ProjectsView, AlterProjectView){
 
 	return Backbone.View.extend({
 		initialize: function() {
@@ -14,19 +15,31 @@ define(['backbone', 'jquery', 'underscore','projectsView', 'addProjectView'], fu
 			$('#allProjects').append( projectsView.el );
 
 			//Create a new AddProjecView and Inject the collection
-			var addProjectView = new AddProjectView({ collection: this.collection });
+			//var addProjectView = new AddProjectView({ collection: this.collection });
 
-			//Listen for Edit event
-			projectsView.on('project:edit', this.editProject, this);
+			//Listen for Edit event, inject model
+			Backbone.on('project:edit', this.alterProject, this );
+
+			//Listen for Add event, inject a new model
+			Backbone.on('project:add', this.alterProject, this );
 		},
 
-		editProject: function(project){
-			//create a new edit view and bind the model
-			var editProjectView = new EditProjectView({ model: project });
-			console.log('körs');
+		alterProject: function(id){
+			var project;
+			var project_id = id.toString();
+			var coll = this.collection;
+
+			if (project_id == 'no id') { 
+				project = new Project();
+			}else{
+				project = this.collection.get(project_id);
+			}
+			//create a new view and bind the model
+			var alterProjectView = new AlterProjectView({ model: project, collection: this.collection });
+			
 			//apend form to the DOM
-			$('#main_div').append(editProjectView.el);
-		},
+			$('#alterProjectDiv').empty().append(alterProjectView.el);
+		}
 	});
 
 });

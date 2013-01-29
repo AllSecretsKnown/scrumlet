@@ -11,14 +11,15 @@ define(['backbone', 'jquery', 'underscore', 'handlebars', 'project', 'editProjec
 
 		//What should we listen for?
 		events: {
-			'click a.delete': 'deleteProject',
-			'click a.edit': 'editProject'
+			'click a.delete': 'deleteProject'
+			//'click a.edit': 'editProject'
 		},
 
 		//Constructor
 		initialize: function(){
 			//When destroy event is triggered, unrender this project
 			this.model.on('destroy', this.unRender, this);
+			this.model.on('changed', this.render, this);
 		},
 
 		//The way to fill our tag element (el) with project data
@@ -40,11 +41,10 @@ define(['backbone', 'jquery', 'underscore', 'handlebars', 'project', 'editProjec
 
 		//Function to edit Project
 		editProject: function(e){
-			
+			//This is handled by the router instead
 			//Trigger an Event
-			console.log('eventet körs på projectview');
-			this.$el.trigger('project:edit', this.model);
-			//this.trigger('project:edit', this.model);
+			//console.log('eventet körs på projectview');
+			//Backbone.trigger('project:edit', this.model);
 		}	
 	});
 });

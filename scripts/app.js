@@ -1,13 +1,13 @@
 /*
 |--------------------------------------------------------------------------
 | Application Bootstrap
-| It will kickstart the app and render application view with a injected collections
+| It will kickstart the app and render application view with an injected collections
 |--------------------------------------------------------------------------
 */
 require(['backbone', 'projectCollection', 'router', 'appView'], function(Backbone, ProjectCollection, Router, AppView){
 	
     //Here is were the acctuall application starts
-	new Router;
+	var router = new Router();
 	Backbone.history.start();
 
 	var projectCollection = new ProjectCollection();

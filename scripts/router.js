@@ -2,20 +2,23 @@ define(['backbone', 'jquery','underscore'], function(Backbone, $, _){
 	return Backbone.Router.extend({
 		routes: {
 			'': 'index',
-			'show/:id': 'show',
-			':id/task/new': 'newTask'
+			'projects/new': 'newProject',
+			'projects/edit/:id': 'editProject'
 		},
 
 		index: function() {
-			
+			console.log('index route triggered!');
 		},
 
-		show: function(id){
-
+		newProject: function(){
+			var id = 'no id';
+			console.log('add project route triggered! id: ' + id.toString());
+			Backbone.trigger('project:add', [id]);
 		},
 
-		newTask: function(){
-
+		editProject: function(id){
+			console.log('edit project route triggered! ID: ' + id.toString());
+			Backbone.trigger('project:edit', [id]);
 		}
 	});
 });

@@ -2,7 +2,8 @@ define(['backbone', 'jquery', 'underscore', 'handlebars', 'project'], function(B
 
 	return Backbone.View.extend({
 		//We have a pre-defined form, use it!
-		el: '#newProjectForm',
+		el: '#alterProjectForm',
+		template: _.template($('#alterProjectTemplate').html()),
 
 		//Lets read the values
 		initialize: function(){

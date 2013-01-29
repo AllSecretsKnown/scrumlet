@@ -1,5 +1,5 @@
 define(['backbone', 'jquery','underscore', 'handlebars', 'project', 'projectView'], function(Backbone, $, _, Handlebars, Project, ProjectView){
-
+	//Project View
 	return Backbone.View.extend({
 		//Projects will render inside an ul
 		tagName: 'tbody',

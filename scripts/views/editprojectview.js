@@ -1,7 +1,7 @@
 define(['backbone', 'jquery', 'underscore', 'handlebars', 'project'], function(Backbone, $, _, Handlebars, Project){
 
 	return Backbone.View.extend({
-		template: _.template($('#editProjectTemplate').html()),
+		template: _.template($('#alterProjectTemplate').html()),
 
 		initialize: function(){
 			//If this view is triggered, render

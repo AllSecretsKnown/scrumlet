@@ -3,7 +3,7 @@
 <head>
     <head>
     <meta charset="utf-8">
-    <title>Project</title>
+    <title>Scrumlet</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -36,18 +36,20 @@
         
     </script>
 
-    <!-- Edit project -->
-    <script type="text/templet" id="editProjectTemplate">
-        <div class="edit_overlay"></div>
-
-        <form class="form-inline" id="editProjectForm">
-            <label class="label" > Name: <input type="text" id="edit_p_name" name="edit_p_name" value="<%= p_name %>">
+    <!-- Alter project -->
+    <script type="text/templet" id="alterProjectTemplate">
+        <form class="form-inline" id="alterProjectForm">
+            <% if (typeof(id) != "undefined") { %>
+                <input type="hidden" id="id" name="id" value="<%= id %>">
+            <% } %>
+        
+            <label class="label" > Name: <input type="text" id="p_name" name="p_name" value="<%= p_name %>">
             </label>
 
-            <label class="label"> Desc: <input type="text" id="edit_p_description" name="edit_p_description" class="input-xxlarge" value="<%= p_description %>">
+            <label class="label"> Desc: <input type="text" id="p_description" name="p_description" class="input-xxlarge" value="<%= p_description %>">
             </label>
             
-            <button type="submit" class="btn btn-success">Create</button>
+            <button type="submit" class="btn btn-success">Save</button>
            
         </form>
 
@@ -80,27 +82,17 @@
 
     <div class="container"> <!-- container -->
         <div class="">
-            <h2>Create a new project</h2>
-            <div>
-                <form class="form-inline" id="newProjectForm">
-                    <label class="label"> Name: 
-                        <input type="text" id="p_name" name="p_name" placeholder="Project Name">
-                    </label>
-
-                    <label class="label"> Desc:  
-                        <input type="text" id="p_description" name="p_description" class="input-xxlarge" placeholder="Keep it short">
-                    </label>
-                    
-                    <button type="submit" class="btn btn-success">Save</button>
-                   
-                </form>
+            <h2>Scrumlet</h2>
+            <div id="alterProjectDiv">
+                
             </div>
         </div>
 
         <div id="main_div">
-            <h2>All Projects</h2>
+            <h3>All Projects</h3>
             <div>
                 <table class="table table-striped" id="allProjects">
+                    <a href="#projects/new" class="btn btn-success new_project">New project</a>
                     <thead>
                     <th>Name: </th>
                     <th>Description: </th>

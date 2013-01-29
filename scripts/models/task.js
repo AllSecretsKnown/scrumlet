@@ -1,8 +1,10 @@
-define(['backbone','jquery', 'underscore'], function(Backbone, $, _){
+define(['backbone','jquery', 'underscore', 'status'], function(Backbone, $, _, Status){
 	return Backbone.RelationalModel.extend({
+		//Default values
 		defaults: {
-			task_name: 'Give me a name',
-			task_description: 'And a description'
+			task_name: 'Task Name',
+			task_description: 'Task Description',
+			status: new Status()
 		},
 
 		validate: function(attrs) {

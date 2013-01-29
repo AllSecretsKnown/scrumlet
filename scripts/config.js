@@ -17,6 +17,7 @@ require.config({
 		projectView: 'views/projectview',
 		addProjectView: 'views/addprojectview',
 		editProjectView: 'views/editprojectview',
+		alterProjectView: 'views/alterprojectview',
 		projectsView: 'views/projectsview',
 		availableStatuses: 'helpers/availablestatuses',
 		appView: 'views/appview',
