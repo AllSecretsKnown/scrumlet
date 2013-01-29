@@ -10,6 +10,13 @@ define(['alterProjectView', 'project', 'projectCollection'], function(AlterProje
 		  });
 		});
 
+		//Clean up
+		afterEach(function () {
+    		this.projectView.collection.each(function(project){
+    			project.destroy();
+    		}, this);
+  		});
+
 		//View should be defined
 		it('AlterProjectView should be defined', function() {
 			expect(this.projectView).toBeDefined();
@@ -68,7 +75,6 @@ define(['alterProjectView', 'project', 'projectCollection'], function(AlterProje
 				p_description: 'test project description'
 			});
 
-			expect(this.projectView.collection.length).toBe(2);
 			expect(this.projectView.collection.length).toBe(2);
 		});
 	});

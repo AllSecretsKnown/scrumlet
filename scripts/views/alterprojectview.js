@@ -47,7 +47,9 @@ define(['backbone', 'jquery', 'underscore', 'project'], function(Backbone, $, _,
 
 		//Function to update a model
 		updateProject: function(data_container){
-			this.collection.update(data_container, { wait: true });
+			this.model.set('p_name', data_container.p_name);
+			this.model.set('p_description', data_container.p_description);
+			this.model.save();
 		},
 
 		//Function to create a new model
