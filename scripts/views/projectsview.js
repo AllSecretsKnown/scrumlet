@@ -1,4 +1,4 @@
-define(['backbone', 'jquery','underscore', 'handlebars', 'project', 'projectView'], function(Backbone, $, _, Handlebars, Project, ProjectView){
+define(['backbone', 'jquery','underscore', 'project', 'projectView'], function(Backbone, $, _, Project, ProjectView){
 	//Project View
 	return Backbone.View.extend({
 		//Projects will render inside an ul

@@ -5,13 +5,16 @@ require.config({
     backbonePure: 'vendor/backbone/backbonePure',
     backbone: 'vendor/backbone/backboneLoader',
     relational: 'vendor/backbone-relational/relational',
-    localStorage: 'vendor/localstorage/backbone.localStorage',  
+    localStorage: 'vendor/localstorage/backbone.localStorage',
+    alterProjectView: 'views/alterprojectview',
+    projectCollection: 'collections/projectcollection',
     status: 'models/status',
     task: 'models/task',
     project: 'models/project',
     statusTest: 'tests/models/statusTest',
     projectTest: 'tests/models/projectTest',
-    taskTest: 'tests/models/taskTest'
+    taskTest: 'tests/models/taskTest',
+    alterProjectTest: 'tests/views/alterprojectviewtest'
   },
   shim: {
     backbonePure: {
@@ -32,7 +35,7 @@ require.config({
 | It will require all testcases and run them
 |--------------------------------------------------------------------------
 */
-define(['tests/models/statusTest', 'tests/models/projectTest', 'tests/models/taskTest'],function(StatusTest, ProjectTest, TaskTest){
+define(['tests/models/statusTest', 'tests/models/projectTest', 'tests/models/taskTest', 'tests/views/alterprojectviewtest'],function(StatusTest, ProjectTest, TaskTest, AlterProjectTest){
 
 	var jasmineEnv = jasmine.getEnv();
   jasmineEnv.updateInterval = 1000;

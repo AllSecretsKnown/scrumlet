@@ -1,4 +1,4 @@
-define(['backbone', 'jquery', 'underscore', 'handlebars', 'project', 'editProjectView'], function(Backbone, $, _, Handlebars, Project, EditProjectView){
+define(['backbone', 'jquery', 'underscore', 'project'], function(Backbone, $, _, Project){
 
 	return Backbone.View.extend({
 		//Projects will render them selfs as li tags

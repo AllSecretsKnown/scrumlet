@@ -1,4 +1,4 @@
-define(['backbone', 'jquery', 'underscore', 'handlebars', 'project'], function(Backbone, $, _, Handlebars, Project){
+define(['backbone', 'jquery', 'underscore', 'project'], function(Backbone, $, _, Project){
 
 	return Backbone.View.extend({
 		template: _.template($('#alterProjectTemplate').html()),

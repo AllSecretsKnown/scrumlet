@@ -1,12 +1,12 @@
-define(['backbone', 'jquery', 'underscore', 'handlebars', 'project'], function(Backbone, $, _, Handlebars, Project){
+define(['backbone', 'jquery', 'underscore', 'project'], function(Backbone, $, _, Project){
 
 	return Backbone.View.extend({
 		//el: '#alterProjectTemplate',
-		template: _.template($('#alterProjectTemplate').html()),
+		template: _.template($('#alterProjectTemplate').html() || ""),
+
 
 		initialize: function(){
-			//If this view is triggered, render
-			this.render();
+			
 		},
 
 		render: function(){
@@ -20,39 +20,50 @@ define(['backbone', 'jquery', 'underscore', 'handlebars', 'project'], function(B
 		//Listen for events
 		events: {
 			//On form submit, call alterProject
-			'submit': 'alterProject'
+			'submit': 'extractValues'
 		},
 
-		//create or update Project and append it to the collection, and clear the form
-		alterProject: function(e){
+		extractValues: function(e){
 			e.preventDefault();
-			
-			var p_id = $('#id').val();
 
-			//If ID is not undefined, update
-			if (typeof(p_id) != "undefined") {
-				this.collection.update({
-					id: p_id,
-					p_name: $('#p_name').val(),
-					p_description: $('#p_description').val()
-				}, { wait: true });
-
-			//Else create
-			}else{
-				this.collection.create({
-					p_name: $('#p_name').val(),
-					p_description: $('#p_description').val()
-				}, { wait: true });
+			var data_container = {
+				id: this.$('#id').val(),
+				p_name: this.$('#p_name').val(),
+				p_description: this.$('#p_description').val()
 			};
 
-			console.log(this.collection.toJSON());
+			//If ID is NOT UNdefined, update
+			if (typeof(data_container.id) != "undefined") {
+				this.updateProject(data_container);
+			//Else create
+			}else{
+				this.addProject(data_container);
+			}
+
 			this.clearForm();
+			this.removeForm();
+
+		},
+
+		//Function to update a model
+		updateProject: function(data_container){
+			this.collection.update(data_container, { wait: true });
+		},
+
+		//Function to create a new model
+		addProject: function(data_container){
+			this.collection.create(data_container, { wait: true });
 		},
 
 		//Clear the form
 		clearForm: function(){
-			$('#p_name').val(''),
-			$('#p_description').val('')
+			this.$('#id').val('');
+			this.$('#p_name').val('');
+			this.$('#p_description').val('');
+		},
+
+		removeForm: function(){
+			this.$el.html('');
 		}
 
 	});

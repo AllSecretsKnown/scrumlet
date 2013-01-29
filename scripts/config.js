@@ -15,8 +15,6 @@ require.config({
 		statusCollection: 'collections/statuscollection',
 		taskCollection: 'collections/taskcollection',
 		projectView: 'views/projectview',
-		addProjectView: 'views/addprojectview',
-		editProjectView: 'views/editprojectview',
 		alterProjectView: 'views/alterprojectview',
 		projectsView: 'views/projectsview',
 		availableStatuses: 'helpers/availablestatuses',

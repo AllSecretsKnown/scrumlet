@@ -38,7 +38,7 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 			var alterProjectView = new AlterProjectView({ model: project, collection: this.collection });
 			
 			//apend form to the DOM
-			$('#alterProjectDiv').empty().append(alterProjectView.el);
+			$('#alterProjectDiv').empty().append(alterProjectView.render().el);
 		}
 	});
 
