@@ -12,7 +12,7 @@ define(['backbone', 'jquery', 'underscore', 'project'], function(Backbone, $, _,
 		//What should we listen for?
 		events: {
 			'click a.delete': 'deleteProject'
-			//'click a.edit': 'editProject'
+			//,'click a.edit': 'editProject'
 		},
 
 		//Constructor
@@ -41,9 +41,7 @@ define(['backbone', 'jquery', 'underscore', 'project'], function(Backbone, $, _,
 
 		//Function to edit Project
 		editProject: function(e){
-			//This is handled by the router instead
-			//Trigger an Event
-			//console.log('eventet körs på projectview');
+			//e.preventDefault();
 			//Backbone.trigger('project:edit', this.model);
 		}	
 	});

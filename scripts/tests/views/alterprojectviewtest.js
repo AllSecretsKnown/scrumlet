@@ -15,6 +15,8 @@ define(['alterProjectView', 'project', 'projectCollection'], function(AlterProje
     		this.projectView.collection.each(function(project){
     			project.destroy();
     		}, this);
+
+    		console.log('After tests: ' + this.projectView.collection.toJSON());
   		});
 
 		//View should be defined
@@ -41,14 +43,14 @@ define(['alterProjectView', 'project', 'projectCollection'], function(AlterProje
 		//Add should add to the collection
 		it('AlterProjectView addProject should add a Project to the collection', function() {
 			this.projectView.addProject({
-				p_name: 'test project',
+				p_name: 'test project 1',
 				p_description: 'test project description'
 			});
 
 			expect(this.projectView.collection.length).toBe(1);
 
 			this.projectView.addProject({
-				p_name: 'another test project',
+				p_name: 'another test project 1',
 				p_description: 'another test project description'
 			});
 
@@ -59,12 +61,12 @@ define(['alterProjectView', 'project', 'projectCollection'], function(AlterProje
 		it('AlterProjectView updateProject should update a Project in the collection', function() {
 			//Add two objects to the collection
 			this.projectView.addProject({
-				p_name: 'test project',
+				p_name: 'test project 2',
 				p_description: 'test project description'
 			});
 
 			this.projectView.addProject({
-				p_name: 'another test project',
+				p_name: 'another test project 2',
 				p_description: 'another test project description'
 			});
 

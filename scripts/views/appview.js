@@ -22,6 +22,9 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 
 			//Listen for Add event, inject a new model
 			Backbone.on('project:add', this.alterProject, this );
+
+			//Listen for saved
+			Backbone.on('project:altered', this.clearForm, this );
 		},
 
 		alterProject: function(id){
@@ -39,6 +42,11 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 			
 			//apend form to the DOM
 			$('#alterProjectDiv').empty().append(alterProjectView.render().el);
+		},
+
+		//Function to clear form
+		clearForm: function(){
+			$('#alterProjectDiv').empty();
 		}
 	});
 
