@@ -1,4 +1,4 @@
-define(['backbone','jquery', 'underscore', 'status'], function(Backbone, $, _, Status){
+define(['backbone', 'underscore', 'status'], function(Backbone, _, Status){
 	return Backbone.RelationalModel.extend({
 		//Default values
 		defaults: {

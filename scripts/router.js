@@ -1,4 +1,4 @@
-define(['backbone', 'jquery','underscore'], function(Backbone, $, _){
+define(['backbone'], function(Backbone){
 	return Backbone.Router.extend({
 		routes: {
 			'': 'index',
