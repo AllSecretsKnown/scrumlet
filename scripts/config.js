@@ -18,7 +18,6 @@ require.config({
 		showProjectView: 'views/showprojectview',
 		alterProjectView: 'views/alterprojectview',
 		projectsView: 'views/projectsview',
-		availableStatuses: 'helpers/availablestatuses',
 		appView: 'views/appview',
 		router: 'router'
 	},
