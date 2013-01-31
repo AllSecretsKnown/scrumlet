@@ -1,3 +1,4 @@
+//Set up a config for Require fitted for the Application
 require.config({
 	deps: ['app'],
 	paths: {

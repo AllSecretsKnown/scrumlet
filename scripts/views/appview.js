@@ -2,7 +2,7 @@
 |--------------------------------------------------------------------------
 | App View
 | Responsible for keeping it all together!
-| Sort of like a controller?
+| App Controller?
 |--------------------------------------------------------------------------
 */
 define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterProjectView', 'showProjectView'],
