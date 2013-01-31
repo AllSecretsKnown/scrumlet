@@ -4,20 +4,21 @@ define(['alterProjectView', 'project', 'projectCollection'], function(AlterProje
 				
 		//Set up a View to be used by the tests
 		beforeEach(function() {
-		  this.projectView = new AlterProjectView({
-		  	model: new Project(),
-		  	collection: new ProjectCollection()
-		  });
+			this.projectView = new AlterProjectView({
+				model: new Project(),
+				collection: new ProjectCollection()
+			});
 		});
 
 		//Clean up
 		afterEach(function () {
-    		this.projectView.collection.each(function(project){
-    			project.destroy();
-    		}, this);
+			this.projectView.collection.each( removeOne, this );
 
-    		console.log('After tests: ' + this.projectView.collection.toJSON());
-  		});
+			//Remove each project created byt the test
+			function removeOne(project){
+				project.destroy();
+			}
+		});
 
 		//View should be defined
 		it('AlterProjectView should be defined', function() {
@@ -70,9 +71,12 @@ define(['alterProjectView', 'project', 'projectCollection'], function(AlterProje
 				p_description: 'another test project description'
 			});
 
-			//Update the firts one
+			//Get the first project
+			var proj = this.projectView.collection.at(1);
+
+			//Update it
 			this.projectView.updateProject({
-				id: 'fbe4e654-0c65-1f5b-c8b8-bdde531a3cbb',
+				id: proj.id,
 				p_name: 'new name',
 				p_description: 'test project description'
 			});

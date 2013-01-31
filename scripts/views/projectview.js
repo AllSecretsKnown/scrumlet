@@ -1,17 +1,18 @@
 define(['backbone', 'jquery', 'underscore', 'project'], function(Backbone, $, _, Project){
-
+	//Project View when rendered within Project List View
 	return Backbone.View.extend({
 		//Projects will render them selfs as li tags
 		tagName: 'tr',
 		//With the class of project
-		className: 'project', 
+		className: 'project',
 
 		//How to render it
 		template: _.template($('#projectTemplate').html()),
 
 		//What should we listen for?
 		events: {
-			'click a.delete': 'deleteProject'
+			'click a.delete': 'deleteProject',
+			'click a.show': 'showProject'
 			//,'click a.edit': 'editProject'
 		},
 
@@ -43,6 +44,11 @@ define(['backbone', 'jquery', 'underscore', 'project'], function(Backbone, $, _,
 		editProject: function(e){
 			//e.preventDefault();
 			//Backbone.trigger('project:edit', this.model);
-		}	
+		},
+
+		showProject: function(e){
+			//e.preventDefault();
+			//Backbone.trigger('project:show', this.model);
+		}
 	});
 });

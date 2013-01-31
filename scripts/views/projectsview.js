@@ -1,15 +1,15 @@
 define(['backbone', 'jquery','underscore', 'project', 'projectView'], function(Backbone, $, _, Project, ProjectView){
-	//Project View
+	//ProjectListView
 	return Backbone.View.extend({
-		//Projects will render inside an ul
+		//Projects will render inside an tbody
 		tagName: 'tbody',
 		//With the class of project
-		className: 'projects', 
+		className: 'projects',
 
-		//Constructor
+		//Initialize, set up eventlisteners
 		initialize: function(){
 			//Apend new projects when they are created
-			//Add one will add one, not rerender the entire collection
+			//Add one will add one, not re-render the entire collection
 			this.collection.on('add', this.addOne, this);
 		},
 
@@ -24,7 +24,7 @@ define(['backbone', 'jquery','underscore', 'project', 'projectView'], function(B
 			//Create a new child view
 			var projectView = new ProjectView({ model: project });
 			//Render the new projectView and append it to this collections Element
-			this.$el.append( projectView.render().el );	
+			this.$el.prepend( projectView.render().el );
 		}
 	});
 });

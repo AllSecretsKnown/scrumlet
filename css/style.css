@@ -1,4 +1,10 @@
+#allProjectsTable{
+	display: none;
+}
 
+.alter_project_div{
+	margin: 25px 0 -10px 0;
+}
 
 tr.project{
 	padding: 5px 10px;

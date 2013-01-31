@@ -1,6 +1,7 @@
 define(['backbone', 'jquery', 'underscore', 'project'], function(Backbone, $, _, Project){
 
 	return Backbone.View.extend({
+		className: 'alter_project_div',
 		//el: '#alterProjectTemplate',
 		template: _.template($('#alterProjectTemplate').html() || ""),
 
@@ -55,9 +56,11 @@ define(['backbone', 'jquery', 'underscore', 'project'], function(Backbone, $, _,
 
 		//Function to update a model
 		updateProject: function(data_container){
+			this.model.set('id', data_container.id);
 			this.model.set('p_name', data_container.p_name);
 			this.model.set('p_description', data_container.p_description);
-			this.model.save();
+			this.collection.update(this.model, {remove: false});
+			
 			//Tell the Project View to re-render the project
 			this.model.trigger('changed', this);
 			//Tell AppView to un-render the form

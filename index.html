@@ -26,33 +26,42 @@
 
     <!-- Templates!! -->
 
-    <!-- Single project Template -->
+    <!-- Single project in list Template -->
     <script type="text/template" id="projectTemplate">
         
-        <td><a href="#projects/"><strong><%= p_name %></strong></a> </td>
+        <td><a href="#project/<%= id %>" class="show"><strong><%= p_name %></strong></a> </td>
         <td><%= p_description %></td>
         <td><%= status.status_name %></td>
-        <td><a href="#projects/edit/<%= id %>" class="edit">Edit</a> <a href="#projects/delete/<%= id %>" class="delete">Delete</a></td>
+        <td><a href="#project/edit/<%= id %>" class="edit">Edit</a> <a href="#project/delete/<%= id %>" class="delete">Delete</a></td>
         
     </script>
 
+    <!-- Show project -->
+    <script type="text/template" id="showProjectTemplate">
+        <h3>Project Name: </h3>
+        <h4><%= p_name %></h4>
+        <h5>Status: </h5>
+        <h6><em><%= status.status_name %></em></h6>
+        <h5>Description: </h5>
+        <p><%= p_description %></p>
+    </script>
+
     <!-- Alter project -->
-    <script type="text/templet" id="alterProjectTemplate">
+    <script type="text/template" id="alterProjectTemplate">
         <form class="form-inline" id="alterProjectForm">
             <% if (typeof(id) != "undefined") { %>
                 <input type="hidden" id="id" name="id" value="<%= id %>">
             <% } %>
         
-            <label class="label" > Name: <input type="text" id="p_name" name="p_name" value="<%= p_name %>">
+            <label class="label" > Name: <input type="text" id="p_name" name="p_name" value="<%= p_name %>" onclick="select()">
             </label>
 
-            <label class="label"> Desc: <input type="text" id="p_description" name="p_description" class="input-xxlarge" value="<%= p_description %>">
+            <label class="label"> Desc: <input type="text" id="p_description" name="p_description" class="input-xxlarge" value="<%= p_description %>" onclick="select()">
             </label>
             
             <button type="submit" class="btn btn-success">Save</button>
            
         </form>
-
     </script>
 
     
@@ -67,10 +76,10 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </a>
-	      <a class="brand" href="#">Scrumlet</a>
+	      <a class="brand" href="#projects">Scrumlet</a>
 	      <div class="nav-collapse collapse">
 	        <ul class="nav">
-	          <li class="active"><a href="#projects">Home</a></li>
+	          <li class="active"><a href="#projects">All Projects</a></li>
 	          <li><a href="#projects/new">New Project</a></li>
 	          <li><a href="doc.html">Documentation</a></li>
               <li><a href="SpecRunner.html">Tests</a></li>
@@ -80,32 +89,23 @@
 	  </div>
 	</div>
 
-    <div class="container"> <!-- container -->
-        <div class="">
-            <h2>Scrumlet</h2>
-            <div id="alterProjectDiv">
-                
-            </div>
-        </div>
+    <div class="container">
 
         <div id="main_div">
-            <h3>All Projects</h3>
-            <div>
-                <table class="table table-striped" id="allProjects">
-                    <a href="#projects/new" class="btn btn-success new_project">New project</a>
-                    <thead>
-                    <th>Name: </th>
-                    <th>Description: </th>
-                    <th>Status: </th>
-                    <th>Action: </th>
-                    </thead>
-                </table>
-            </div>
+            <!-- application will render here -->
         </div>
-        
-      
 
-    </div> <!-- /container -->
+        <!-- tamplate table for all projects -->
+        <table class="table table-striped" id="allProjectsTable">
+            <thead>
+                <th>Name: </th>
+                <th>Description: </th>
+                <th>Status: </th>
+                <th>Action: </th>
+            </thead>
+        </table>
+
+    </div> 
 
 <!-- Include require.js -->
 <!-- set data-main to the main js file -->
