@@ -9,11 +9,6 @@
 
     <!-- Import Bootstrap stylesheet -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <style>
-      body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-    </style>
     <!-- import Responsive styles -->
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <!-- import alternative styles -->
@@ -26,7 +21,7 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Backbone Templates!! -->
+    <!-- #Backbone Templates!! -->
     <!-- Template for displaying a single Project in AllPRojectsTable -->
     <script type="text/template" id="projectTemplate">
         
@@ -47,8 +42,7 @@
         <p><%= p_description %></p>
     </script>
 
-    <!-- Alter project -->
-    <!-- Used by both Create and Edit project -->
+    <!-- Alter project, used by both Create and Edit project -->
     <script type="text/template" id="alterProjectTemplate">
         <form class="form-inline" id="alterProjectForm">
             <!-- if we have an ID, render a hidden field -->
@@ -84,7 +78,7 @@
 	          <li class="active"><a href="#projects">All Projects</a></li>
 	          <li><a href="#projects/new">New Project</a></li>
 	          <li><a href="doc.html" target="_blank">Documentation</a></li>
-              <li><a href="SpecRunner.html" target="_blank">Tests</a></li>
+              <li><a href="TestRunner.html" target="_blank">Tests</a></li>
 	        </ul>
 	      </div><!--/.nav-collapse -->
 	    </div>
@@ -93,11 +87,12 @@
 
     <!-- main container, sets the width of the "application!" -->
     <div class="container">
+        <!-- ##App will render in here -->
         <div id="main_div">
-            <!-- application will render here -->
+            
         </div>
 
-        <!-- Extra inline Templates -->
+        <!-- ##Extra inline Templates -->
         <!-- template table for all projects -->
         <table class="table table-striped" id="allProjectsTable">
             <thead>

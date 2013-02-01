@@ -7,10 +7,10 @@
 require(['backbone', 'projectCollection', 'router', 'appView'], function(Backbone, ProjectCollection, Router, AppView){
 	
 
-	//Here is were the acctuall application starts
-	//Instatiate a new Router
+	//##Here is were the application acctuall starts
+	//by instatiating a new Router
 	var router = new Router();
-	//Start Backbone History to enable Routing
+	//And Starting Backbone History to enable Routing
 	Backbone.history.start();
 
 	//Instantiate a new ProjectCollection and fetch all projects

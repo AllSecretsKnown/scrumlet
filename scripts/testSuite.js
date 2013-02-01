@@ -1,4 +1,5 @@
-//Set up a config for Require fitted for the TestSuite
+//##Set up a config for Require.js fitted for the TestSuite
+//Differs from the Main require config file
 require.config({
   paths: {
     jquery: 'vendor/jquery/dist/jquery',
@@ -30,13 +31,14 @@ require.config({
       }
   }
 });
+
 /*
 |--------------------------------------------------------------------------
 | Test Suite
 | It will require all testcases and run them
 |--------------------------------------------------------------------------
 */
-//Include all testclasses and run tests with jasmine
+//##Include all testclasses and run tests with jasmine
 define(['tests/models/statusTest', 'tests/models/projectTest', 'tests/models/taskTest', 'tests/views/alterprojectviewtest'],function(StatusTest, ProjectTest, TaskTest, AlterProjectTest){
 
 	var jasmineEnv = jasmine.getEnv();

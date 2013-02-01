@@ -2,11 +2,11 @@ define(['backbone'], function(Backbone){
 	return Backbone.Router.extend({
 		//Set up all Application routes
 		routes: {
-			'': 'index', //Main
-			'projects': 'index', //Alt. Main
-			'project/:id': 'showProject', //Show Project by ID
-			'projects/new': 'newProject', //Add Project
-			'project/edit/:id': 'editProject' //Edit Project
+			'': 'index',
+			'projects': 'index',
+			'project/:id': 'showProject',
+			'projects/new': 'newProject',
+			'project/edit/:id': 'editProject'
 		},
 
 		//Main route, "index" page
