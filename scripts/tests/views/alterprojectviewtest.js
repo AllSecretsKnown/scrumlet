@@ -6,6 +6,7 @@ define(['alterProjectView', 'project', 'projectCollection'], function(AlterProje
 		beforeEach(function() {
 			this.projectView = new AlterProjectView({
 				model: new Project(),
+				//Inject Test storage to the test collection
 				collection: new ProjectCollection()
 			});
 		});

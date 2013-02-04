@@ -14,7 +14,7 @@ require(['backbone', 'projectCollection', 'router', 'appView'], function(Backbon
 	Backbone.history.start();
 
 	//Instantiate a new ProjectCollection and fetch all projects
-    var projectCollection = new ProjectCollection();
+    var projectCollection = new ProjectCollection( );
 	projectCollection.fetch().then(function(){
 		
 		//Inject the collection of Projects into our AppView

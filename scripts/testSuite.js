@@ -9,7 +9,7 @@ require.config({
     relational: 'vendor/backbone-relational/relational',
     localStorage: 'vendor/localstorage/backbone.localStorage',
     alterProjectView: 'views/alterprojectview',
-    projectCollection: 'collections/projectcollection',
+    projectCollection: 'collections/testprojectcollection',
     status: 'models/status',
     task: 'models/task',
     project: 'models/project',
