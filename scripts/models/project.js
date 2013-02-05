@@ -4,23 +4,20 @@ define(['backbone', 'underscore', 'status', 'task'], function(Backbone, _, Statu
 		defaults: {
 			p_name: 'Project name',
 			p_description: 'Project description',
-			status: new Status({ status_name: 'TO DO'})
+			p_status: 'TO DO'
 		},
 
 		url: '/project',
 
 		//Constructor
 		initialize: function(){
-			
+			Backbone.on('add:task', this.addTask, this);
 		},
 
-		//Events
-		events: {
-			'add:tasks': 'this.addTask'
-		},
-
-		addTask: function(){
-			
+		addTask: function(task){
+			//console.log(task);
+			this.get('tasks').add(task);
+			console.log(this.get('tasks').toJSON());
 		},
 
 		// Validate when created or updated
@@ -41,13 +38,6 @@ define(['backbone', 'underscore', 'status', 'task'], function(Backbone, _, Statu
 			relatedModel: Task,
 			reverseRelation: {
                 key: 'project'
-            }
-		},{
-			type: Backbone.HasOne,
-			key: "status",
-			relatedModel: Status,
-			reverseRelation: {
-                key: 'projects'
             }
 		}]
 	});

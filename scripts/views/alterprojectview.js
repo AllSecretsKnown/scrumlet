@@ -5,13 +5,12 @@ define(['backbone', 'jquery', 'underscore', 'project'], function(Backbone, $, _,
 		//el: '#alterProjectTemplate',
 		template: _.template($('#alterProjectTemplate').html() || ""),
 
-
 		initialize: function(){
-			
+
 		},
 
 		render: function(){
-			var html = this.template( this.model.toJSON() );
+			var html = this.template( this.model.toJSON());
 
 			this.$el.html( html );
 			return this;
@@ -20,7 +19,8 @@ define(['backbone', 'jquery', 'underscore', 'project'], function(Backbone, $, _,
 		//Listen for events
 		events: {
 			//On form submit, call alterProject
-			'submit': 'alterProject'
+			'submit': 'alterProject',
+			'click .cancel': 'unrenderForm'
 		},
 
 		//Function to process input
@@ -29,7 +29,8 @@ define(['backbone', 'jquery', 'underscore', 'project'], function(Backbone, $, _,
 			var data_container = {
 				id: this.$('#id').val(),
 				p_name: this.$('#p_name').val() || '',
-				p_description: this.$('#p_description').val() || ''
+				p_description: this.$('#p_description').val() || '',
+				p_status: this.$('#p_status').val() || ''
 			};
 			this.clearForm();
 			callBack(data_container, this);
@@ -59,19 +60,20 @@ define(['backbone', 'jquery', 'underscore', 'project'], function(Backbone, $, _,
 			this.model.set('id', data_container.id);
 			this.model.set('p_name', data_container.p_name);
 			this.model.set('p_description', data_container.p_description);
+			this.model.set('p_status', data_container.p_status);
 			this.collection.update(this.model, {remove: false});
 			
 			//Tell the Project View to re-render the project
 			this.model.trigger('changed', this);
 			//Tell AppView to un-render the form
-			Backbone.trigger('project:altered');
+			Backbone.trigger('project:unrenderform');
 		},
 
 		//Function to create a new model
 		addProject: function(data_container){
 			this.collection.create(data_container, { wait: true });
 			//Tell AppView to un-render the form
-			Backbone.trigger('project:altered');
+			Backbone.trigger('project:unrenderform');
 		},
 
 		//Clear the form
@@ -79,6 +81,12 @@ define(['backbone', 'jquery', 'underscore', 'project'], function(Backbone, $, _,
 			this.$('#id').val('');
 			this.$('#p_name').val('');
 			this.$('#p_description').val('');
+		},
+
+		unrenderForm: function(e){
+			e.preventDefault();
+			//Tell AppView to un-render the form
+			Backbone.trigger('project:unrenderform');
 		}
 
 	});

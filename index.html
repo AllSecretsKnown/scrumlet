@@ -9,10 +9,11 @@
 
     <!-- Import Bootstrap stylesheet -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <!-- import Responsive styles -->
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <!-- import alternative styles -->
     <link rel="stylesheet" type="text/css" href="css/alt-bootrstrap.css">
+    <!-- import Responsive styles -->
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    
     <!-- import additional styles -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -27,19 +28,56 @@
         
         <td><a href="#project/<%= id %>" class="show"><strong><%= p_name %></strong></a> </td>
         <td><%= p_description %></td>
-        <td><%= status.status_name %></td>
+        <td><%= p_status %></td>
         <td><a href="#project/edit/<%= id %>" class="edit">Edit</a> <a href="#project/delete/<%= id %>" class="delete">Delete</a></td>
         
     </script>
 
     <!-- Show project -->
     <script type="text/template" id="showProjectTemplate">
-        <h3>Project Name: </h3>
-        <h4><%= p_name %></h4>
-        <h5>Status: </h5>
-        <h6><em><%= status.status_name %></em></h6>
-        <h5>Description: </h5>
-        <p><%= p_description %></p>
+        <h2>Project: <%= p_name %></h2>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Project Name: </th>
+                    <th>Project Description: </th>
+                    <th>Status: </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><%= p_name %></td>
+                    <td><%= p_description %></td>
+                    <td><em><%= p_status %></em></td>
+                </tr>
+            </tbody>
+        </table>
+        <div id=task_div>
+            <a href="/projects/<%= id %>/task/new" id="new_task" class="btn btn-primary">New Task</a>
+        </div>
+        <div id="new_task_div"></div>
+        <h4>Tasks: </h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name: </th>
+                    <th>Description: </th>
+                    <th>Status: </th>
+                </tr>
+            </thead>
+            <tbody id="task_tabel_body">
+               
+            </tbody>
+        </table>
+    </script>
+
+    <!-- Show task tamplate -->
+    <script type="text/template" id="show_single_task_template">
+        <td><%= task_name %></td>
+        <td><%= task_description %></td>
+        <td><em><%= task_status %></em></td>
+        <td><a href="task/delete/" class="btn btn-warning delete">Delete</a></td>
     </script>
 
     <!-- Alter project, used by both Create and Edit project -->
@@ -48,6 +86,9 @@
             <!-- if we have an ID, render a hidden field -->
             <% if (typeof(id) != "undefined") { %>
                 <input type="hidden" id="id" name="id" value="<%= id %>">
+                <h3>Edit: <%= p_name %></h3>
+            <% }else{ %>
+                <h3>Create a new Project:</h3>
             <% } %>
         
             <label class="label" > Name: <input type="text" id="p_name" name="p_name" value="<%= p_name %>" onclick="select()">
@@ -55,9 +96,44 @@
 
             <label class="label"> Desc: <input type="text" id="p_description" name="p_description" class="input-xxlarge" value="<%= p_description %>" onclick="select()">
             </label>
-            
-            <button type="submit" class="btn btn-success">Save</button>
            
+            <label class="label" for="status"> Status:  
+                <select name="status" id="p_status" class="">
+                  <option value="TO DO" <%= p_status === "TO DO" ? selected="selected" : null%> >TO DO</option>
+                  <option value="DOING" <%= p_status === "DOING" ? selected="selected" : null%> >DOING</option>
+                  <option value="DONE" <%= p_status === "DONE" ? selected="selected" : null%> >DONE</option>
+                </select>
+            </label>
+            
+            <button type="submit" class="btn btn-success save">Save</button>
+            <button type="submit" class="btn btn-danger cancel">Cancel</button>
+        </form>
+    </script>
+
+    <!-- Add Task Template -->
+    <script type="text/template" id="addTaskTemplate">
+        <form class="form-inline" id="newTaskForm">
+            <!-- if we have an ID, render a hidden field -->
+            <% if (typeof(id) != "undefined") { %>
+                <input type="hidden" id="id" name="id" value="<%= id %>">
+            <% }%>
+
+            <label class="label" for="task_status"> Status:  
+                <select name="status" id="task_status" class="input-small">
+                  <option value="TO DO" <%= task_status === "TO DO" ? selected="selected" : null%> >TO DO</option>
+                  <option value="DOING" <%= task_status === "DOING" ? selected="selected" : null%> >DOING</option>
+                  <option value="DONE" <%= task_status === "DONE" ? selected="selected" : null%> >DONE</option>
+                </select>
+            </label>
+        
+            <label class="label" > Name: <input type="text" id="task_name" name="task_name" value="<%= task_name %>" onclick="select()">
+            </label>
+
+            <label class="label"> Desc: <input type="text" id="task_description" name="task_description" class="input-xxlarge" value="<%= task_description %>" onclick="select()">
+            </label> <br>
+            
+            <button type="submit" class="btn btn-success save" id="save_task">Save</button>
+            <button type="submit" class="btn btn-danger cancel" id="cancel_task">Cancel</button>
         </form>
     </script>
 </head>
@@ -88,7 +164,7 @@
     <!-- main container, sets the width of the "application!" -->
     <div class="container">
         <!-- ##App will render in here -->
-        <div id="main_div">
+        <div id="main_div" class="hero-unit">
             
         </div>
 

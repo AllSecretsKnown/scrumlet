@@ -24,6 +24,12 @@ define(['project'], function(Project){
 			expect(p_description).toBe('Project description');
 		});
 
+		//Model should have a default status
+		it("Project model should have a default status", function() {
+			var p_status = this.project.get('p_status');
+			expect(p_description).toBe('TO DO');
+		});
+
 		//Model should not accept an empty name
 		it("Project model should require a name", function() {
 			var status = this.project.set('p_name', '');

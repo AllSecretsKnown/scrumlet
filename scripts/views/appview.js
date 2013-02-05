@@ -6,7 +6,7 @@
 |--------------------------------------------------------------------------
 */
 define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterProjectView', 'showProjectView'],
-	function(Backbone, $, _, Project, ProjectsView, AlterProjectView, ShowProjectView){
+	function(Backbone, $, _, Project, ProjectsView, AlterProjectView, ShowProjectView ){
 
 	return Backbone.View.extend({
 		//Initialize the AppView, set up event listeners
@@ -26,7 +26,7 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 
 			//Listen for Project saved event, remove form
 			//TODO: Show Feedback to user
-			Backbone.on('project:altered', this.clearForm, this );
+			Backbone.on('project:unrenderform', this.clearForm, this );
 		},
 
 		//Show main page
@@ -47,6 +47,7 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 		showSingleProject: function(id){
 			var project_id = id.toString();
 			var project = this.collection.get(project_id);
+			
 			var showProjectView = new ShowProjectView({ model: project }).render();
 
 			$('#main_div').empty().append( showProjectView.el );
