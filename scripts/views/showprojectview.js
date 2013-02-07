@@ -7,7 +7,8 @@ define(['jquery', 'underscore', 'backbone', 'project', 'addTaskView', 'showTaskV
 		
 		//Construct
 		initialize: function(){
-			
+			this.model.on('change', this.render, this);
+			this.model.get('tasks').on('change', this.render, this);
 		},
 
 		//Set up all events we wanna listen to
@@ -35,7 +36,7 @@ define(['jquery', 'underscore', 'backbone', 'project', 'addTaskView', 'showTaskV
 		//Function to render Add task view
 		renderAddTask: function(e){
 			e.preventDefault();
-			this.addTaskView = new AddTaskView().render();
+			this.addTaskView = new AddTaskView( { model: this.model } ).render();
 			this.$el.find('#new_task_div').empty().append( this.addTaskView.el );
 		}
 	});

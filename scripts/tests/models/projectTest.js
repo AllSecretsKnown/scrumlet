@@ -4,7 +4,7 @@ define(['project'], function(Project){
 				
 		//Set up a model to be used by the tests
 		beforeEach(function() {
-		  this.project = new Project();
+			this.project = new Project();
 		});
 
 		//Project model should be defined

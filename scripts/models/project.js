@@ -11,12 +11,15 @@ define(['backbone', 'underscore', 'status', 'task'], function(Backbone, _, Statu
 
 		//Constructor
 		initialize: function(){
-			Backbone.on('add:task', this.addTask, this);
+			this.on('add:task', this.addTask, this);
 		},
 
+		//Function to add a task to the tasks-collection
+		//Will trigger change on project model
 		addTask: function(task){
 			this.get('tasks').add(task);
-			//console.log(this.get('tasks').toJSON());
+			this.save();
+			//this.trigger('change');
 		},
 
 		// Validate when created or updated
