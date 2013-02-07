@@ -9,7 +9,7 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 	function(Backbone, $, _, Project, ProjectsView, AlterProjectView, ShowProjectView ){
 
 	return Backbone.View.extend({
-		//Initialize the AppView, set up event listeners
+		//##Initialize the AppView, set up event listeners
 		initialize: function() {
 			
 			//Listen for index route
@@ -29,7 +29,7 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 			Backbone.on('project:unrenderform', this.clearForm, this );
 		},
 
-		//Show main page
+		//##Show main page
 		showIndex: function(){
 			//Create a new ProjectCollection-view and inject the collection, then render it
 			var projectsView = new ProjectsView({ collection: this.collection }).render();
@@ -43,7 +43,7 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 			$('#main_div').empty().append( table.show() );
 		},
 
-		//Function to render showProjectView, inject the model
+		//##Function to render showProjectView, inject the model
 		showSingleProject: function(id){
 			var project_id = id.toString();
 			var project = this.collection.get(project_id);
@@ -53,7 +53,7 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 			$('#main_div').empty().append( showProjectView.el );
 		},
 
-		//Function to add or edit Project
+		//##Function to add or edit Project
 		alterProject: function(id){
 			var project;
 			var project_id = id.toString();
@@ -75,7 +75,7 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 			$('#main_div').prepend(alterProjectView.render().el);
 		},
 
-		//Function to clear form
+		//###Function to clear form
 		clearForm: function(){
 			$('.alter_project_div').remove();
 		}
