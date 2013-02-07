@@ -1,7 +1,7 @@
 define(['backbone', 'jquery', 'underscore', 'project'], function(Backbone, $, _, Project){
 
 	return Backbone.View.extend({
-		className: 'alter_project_div',
+		className: 'alter_project_div well',
 		//el: '#alterProjectTemplate',
 		template: _.template($('#alterProjectTemplate').html() || ""),
 

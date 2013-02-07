@@ -54,7 +54,7 @@
             </tbody>
         </table>
         <div id=task_div>
-            <a href="/projects/<%= id %>/task/new" id="new_task" class="btn btn-primary">New Task</a>
+            <a href="/projects/<%= id %>/task/new" id="new_task" class="btn btn-info">New Task</a>
         </div>
         <div id="new_task_div"></div>
         <h4>Tasks: </h4>
@@ -77,7 +77,7 @@
         <td><%= task_name %></td>
         <td><%= task_description %></td>
         <td><em><%= task_status %></em></td>
-        <td><a href="task/delete/" class="btn btn-warning delete">Delete</a></td>
+        <td><a href="task/delete/" class="btn btn-danger delete">Delete</a> <a href="task/update/" class="btn btn-warning update">Update</a></td>
     </script>
 
     <!-- Alter project, used by both Create and Edit project -->
@@ -104,7 +104,7 @@
                   <option value="DONE" <%= p_status === "DONE" ? selected="selected" : null%> >DONE</option>
                 </select>
             </label>
-            
+            <br>
             <button type="submit" class="btn btn-success save">Save</button>
             <button type="submit" class="btn btn-danger cancel">Cancel</button>
         </form>
