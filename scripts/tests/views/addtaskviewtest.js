@@ -38,5 +38,25 @@ define(['addTaskView', 'task', 'project'], function(AddTaskView, Task, Project){
 
 			expect(this.addTaskView.model.get('tasks').length).toBe(1);
 		});
+
+		it('Should uppdate existing Task, not create new, when updating', function(){
+			var new_task = new Task({
+				task_name: 'Test task',
+				task_description: 'Test description'
+			});
+
+			this.addTaskView.saveTask(new_task);
+
+			expect(this.addTaskView.model.get('tasks').length).toBe(1);
+
+			var task_to_update = this.addTaskView.model.get('tasks').first();
+			task_to_update.set('task_name', 'new name');
+			task_to_update.set('task_description', 'new description');
+
+			this.addTaskView.saveTask(task_to_update);
+
+			expect(this.addTaskView.model.get('tasks').length).toBe(1);
+			expect(this.addTaskView.model.get('tasks').first().get('task_name')).toBe('new name');
+		});
 	});
 });
