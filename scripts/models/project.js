@@ -15,9 +15,8 @@ define(['backbone', 'underscore', 'status', 'task'], function(Backbone, _, Statu
 		},
 
 		addTask: function(task){
-			//console.log(task);
 			this.get('tasks').add(task);
-			console.log(this.get('tasks').toJSON());
+			//console.log(this.get('tasks').toJSON());
 		},
 
 		// Validate when created or updated
