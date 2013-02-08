@@ -41,7 +41,7 @@ require.config({
 |--------------------------------------------------------------------------
 */
 //##Include all testclasses and run tests with jasmine
-define(['tests/models/statusTest', 'tests/models/projectTest', 'tests/models/taskTest', 'tests/views/project/alterprojectviewtest', 'tests/views/task/addtaskviewtest'],
+define(['tests/models/statusTest', 'tests/models/projectTest', 'tests/models/taskTest', 'tests/views/alterprojectviewtest', 'tests/views/addtaskviewtest'],
         function(StatusTest, ProjectTest, TaskTest, AlterProjectTest, AddTaskViewTest){
 
 	var jasmineEnv = jasmine.getEnv();
