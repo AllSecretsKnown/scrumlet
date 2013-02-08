@@ -39,6 +39,7 @@ define(['addTaskView', 'task', 'project'], function(AddTaskView, Task, Project){
 			expect(this.addTaskView.model.get('tasks').length).toBe(1);
 		});
 
+		//inserting a comment to force an update in git
 		it('Should uppdate existing Task, not create new, when updating', function(){
 			var new_task = new Task({
 				task_name: 'Test task',
