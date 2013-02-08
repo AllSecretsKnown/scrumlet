@@ -1,7 +1,7 @@
 //##Project collection
 //A collection of projects, using Localstorage for persistance
 //This collection is used in PROD env.
-define(['backbone', 'underscore', 'localStorage', 'project'], function(Backbone, _, LocalStorage, Project){
+define(['backbone', 'localStorage', 'project'], function(Backbone, LocalStorage, Project){
 	return Backbone.Collection.extend({
 		model: Project,
 		url: '/projects',

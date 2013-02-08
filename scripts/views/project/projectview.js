@@ -1,4 +1,4 @@
-define(['backbone', 'jquery', 'underscore', 'project'], function(Backbone, $, _, Project){
+define(['backbone', 'jquery', 'underscore'], function(Backbone, $, _){
 	//Project View when rendered within Project List View
 	return Backbone.View.extend({
 		//Projects will render them selfs as li tags

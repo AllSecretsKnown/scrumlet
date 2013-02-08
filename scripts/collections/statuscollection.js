@@ -1,4 +1,4 @@
-define(['backbone', 'underscore', 'status'], function(Backbone, _, Status){
+define(['backbone', 'status'], function(Backbone, Status){
 	return Backbone.Collection.extend({
 		model: Status,
 		url: '/statuses',

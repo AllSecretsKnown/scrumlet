@@ -1,4 +1,4 @@
-define(['backbone', 'underscore', 'task'], function(Backbone, _, Task){
+define(['backbone', 'task'], function(Backbone, Task){
 	return Backbone.Collection.extend({
 		model: Task,
 		url: '/tasks',

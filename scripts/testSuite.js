@@ -17,20 +17,20 @@ require.config({
     statusTest: 'tests/models/statusTest',
     projectTest: 'tests/models/projectTest',
     taskTest: 'tests/models/taskTest',
-    alterProjectTest: 'tests/views/alterprojectviewtest',
-    addTaskViewTest: 'tests/views/addtaskviewtest'
+    alterProjectTest: 'tests/views/project/alterprojectviewtest',
+    addTaskViewTest: 'tests/views/task/addtaskviewtest'
   },
   shim: {
     backbonePure: {
-        deps: ['jquery', 'underscore'],
-          exports: 'Backbone'
-      },
-      relational: {
-        deps: ['backbonePure', 'underscore']
-      },
-      localStorage: {
-        deps: ['backbonePure', 'underscore']
-      }
+      deps: ['jquery', 'underscore'],
+      exports: 'Backbone'
+    },
+    relational: {
+      deps: ['backbonePure', 'underscore']
+    },
+    localStorage: {
+      deps: ['backbonePure', 'underscore']
+    }
   }
 });
 
@@ -41,7 +41,7 @@ require.config({
 |--------------------------------------------------------------------------
 */
 //##Include all testclasses and run tests with jasmine
-define(['tests/models/statusTest', 'tests/models/projectTest', 'tests/models/taskTest', 'tests/views/alterprojectviewtest', 'tests/views/addtaskviewtest'],
+define(['tests/models/statusTest', 'tests/models/projectTest', 'tests/models/taskTest', 'tests/views/project/alterprojectviewtest', 'tests/views/task/addtaskviewtest'],
         function(StatusTest, ProjectTest, TaskTest, AlterProjectTest, AddTaskViewTest){
 
 	var jasmineEnv = jasmine.getEnv();
