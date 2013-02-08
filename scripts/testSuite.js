@@ -8,8 +8,8 @@ require.config({
     backbone: 'vendor/backbone/backboneLoader',
     relational: 'vendor/backbone-relational/relational',
     localStorage: 'vendor/localstorage/backbone.localStorage',
-    alterProjectView: 'views/alterprojectview',
-    addTaskView: 'views/addtaskview',
+    alterProjectView: 'views/project/alterprojectview',
+    addTaskView: 'views/task/addtaskview',
     projectCollection: 'collections/testprojectcollection',
     status: 'models/status',
     task: 'models/task',
@@ -17,8 +17,8 @@ require.config({
     statusTest: 'tests/models/statusTest',
     projectTest: 'tests/models/projectTest',
     taskTest: 'tests/models/taskTest',
-    alterProjectTest: 'tests/views/project/alterprojectviewtest',
-    addTaskViewTest: 'tests/views/task/addtaskviewtest'
+    alterProjectTest: 'tests/views/alterprojectviewtest',
+    addTaskViewTest: 'tests/views/addtaskviewtest'
   },
   shim: {
     backbonePure: {
