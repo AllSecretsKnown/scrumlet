@@ -5,7 +5,7 @@ define(['backbone', 'localStorage', 'project'], function(Backbone, LocalStorage,
 	return Backbone.Collection.extend({
 		model: Project,
 		url: '/projects',
-		localStorage: new Backbone.LocalStorage("ProjectsCollection")
+		localStorage: new Backbone.LocalStorage(window.Jasmine ? "TestCollection" : "ProjectsCollection")
 	});
 });
 	

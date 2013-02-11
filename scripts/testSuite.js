@@ -10,7 +10,7 @@ require.config({
     localStorage: 'vendor/localstorage/backbone.localStorage',
     alterProjectView: 'views/project/alterprojectview',
     addTaskView: 'views/task/addtaskview',
-    projectCollection: 'collections/testprojectcollection',
+    projectCollection: 'collections/projectcollection',
     status: 'models/status',
     task: 'models/task',
     project: 'models/project',
