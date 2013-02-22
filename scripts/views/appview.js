@@ -45,6 +45,7 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 
 		//##Function to render showProjectView, inject the model
 		showSingleProject: function(id){
+			console.log('show by id: ' + id);
 			var project_id = id.toString();
 			var project = this.collection.get(project_id);
 			
