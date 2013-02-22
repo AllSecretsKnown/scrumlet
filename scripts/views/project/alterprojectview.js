@@ -1,4 +1,4 @@
-define(['backbone', 'jquery', 'underscore', 'project'], function(Backbone, $, _, Project){
+define(['backbone', 'jquery', 'underscore'], function(Backbone, $, _){
 
 	return Backbone.View.extend({
 		className: 'alter_project_div well',

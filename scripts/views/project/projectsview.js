@@ -1,4 +1,4 @@
-define(['backbone', 'jquery','underscore', 'project', 'projectView'], function(Backbone, $, _, Project, ProjectView){
+define(['backbone', 'jquery', 'project', 'projectView'], function(Backbone, $, Project, ProjectView){
 	//ProjectListView
 	return Backbone.View.extend({
 		//Projects will render inside an tbody

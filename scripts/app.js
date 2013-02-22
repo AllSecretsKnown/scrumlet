@@ -7,7 +7,7 @@
 require(['backbone', 'projectCollection', 'router', 'appView'], function(Backbone, ProjectCollection, Router, AppView){
 	
 
-	//##Here is were the application acctuall starts
+	//##Here is were the application actuall starts
 	//by instantiating a new Router
 	var router = new Router();
 	//And Starting Backbone History to enable Routing
@@ -19,8 +19,5 @@ require(['backbone', 'projectCollection', 'router', 'appView'], function(Backbon
 		
 		//Inject the collection of Projects into our AppView
 		var appView = new AppView({ collection: projectCollection });
-
-		//On Application start we make sure that the index route is triggered
-		router.navigate('projects', { trigger: true });
 	});
 });

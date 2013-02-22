@@ -1,4 +1,4 @@
-define(['backbone', 'underscore'], function(Backbone, _){
+define(['backbone'], function(Backbone){
 	return Backbone.RelationalModel.extend({
 		//Default values
 		defaults: {

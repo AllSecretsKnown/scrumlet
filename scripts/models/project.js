@@ -1,4 +1,4 @@
-define(['backbone', 'underscore', 'status', 'task'], function(Backbone, _, Status, Task){
+define(['backbone', 'status', 'task'], function(Backbone, Status, Task){
 	return Backbone.RelationalModel.extend({
 		//Default values
 		defaults: {
