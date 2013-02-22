@@ -16,6 +16,7 @@ require(['backbone', 'projectCollection', 'router', 'appView'], function(Backbon
 
 		//Instantiating a new Router
 		var router = new Router();
+		
 		//And Starting Backbone History to enable Routing
 		Backbone.history.start();
 	});
