@@ -5,7 +5,6 @@
 |--------------------------------------------------------------------------
 */
 require(['backbone', 'projectCollection', 'router', 'appView'], function(Backbone, ProjectCollection, Router, AppView){
-	
 
 	//##Here is were the application actuall starts
 	//by instantiating a new Router

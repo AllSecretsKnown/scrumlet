@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'project', 'addTaskView', 'showTaskView'], function($, _, Backbone, Project, AddTaskView, ShowTaskView){
+define(['jquery', 'underscore', 'backbone', 'addTaskView', 'showTaskView'], function($, _, Backbone, AddTaskView, ShowTaskView){
 	return Backbone.View.extend({
 		tagName: 'div',
 		className: 'show_project_div',
