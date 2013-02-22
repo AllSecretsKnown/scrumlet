@@ -9,6 +9,10 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 	function(Backbone, $, _, Project, ProjectsView, AlterProjectView, ShowProjectView ){
 
 	return Backbone.View.extend({
+
+		//Set the elemt to the HTML Body
+		el: 'body',
+
 		//##Initialize the AppView, set up event listeners
 		initialize: function() {
 			
@@ -40,7 +44,7 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 			table.removeAttr('id');
 
 			//Apend it to the AllProjectsTable
-			$('#main_div').empty().append( table.show() );
+			this.$('#main_div').empty().append( table.show() );
 		},
 
 		//##Function to render showProjectView, inject the model
@@ -51,7 +55,7 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 			
 			var showProjectView = new ShowProjectView({ model: project }).render();
 
-			$('#main_div').empty().append( showProjectView.el );
+			this.$('#main_div').empty().append( showProjectView.el );
 		},
 
 		//##Function to add or edit Project
@@ -73,12 +77,12 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 			//Get back to index page
 			this.showIndex();
 			//apend form to the DOM
-			$('#main_div').prepend(alterProjectView.render().el);
+			this.$('#main_div').prepend(alterProjectView.render().el);
 		},
 
 		//###Function to clear form
 		clearForm: function(){
-			$('.alter_project_div').remove();
+			this.$('.alter_project_div').remove();
 		}
 	});
 
