@@ -15,7 +15,7 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 
 		//##Initialize the AppView, set up event listeners
 		initialize: function() {
-			
+
 			//Listen for index route
 			Backbone.on('project:index', this.showIndex, this );
 
@@ -52,7 +52,7 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 			console.log('show by id: ' + id);
 			var project_id = id.toString();
 			var project = this.collection.get(project_id);
-			
+
 			var showProjectView = new ShowProjectView({ model: project }).render();
 
 			this.$('#main_div').empty().append( showProjectView.el );
@@ -71,7 +71,7 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 			}
 			//create a new view and bind the model
 			var alterProjectView = new AlterProjectView({ model: project, collection: this.collection });
-			
+
 			//Remove existing form befor rendering a new
 			this.clearForm();
 			//Get back to index page
