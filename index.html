@@ -83,6 +83,7 @@
     <!-- Alter project, used by both Create and Edit project -->
     <script type="text/template" id="alterProjectTemplate">
         <form class="form-inline" id="alterProjectForm">
+        <div id="errorContainer"></div>
             <!-- if we have an ID, render a hidden field -->
             <% if (typeof(id) != "undefined") { %>
                 <input type="hidden" id="id" name="id" value="<%= id %>">
@@ -113,6 +114,7 @@
     <!-- Add Task Template -->
     <script type="text/template" id="addTaskTemplate">
         <form class="form-inline" id="newTaskForm">
+        <div id="errorContainer"></div>
             <!-- if we have an ID, render a hidden field -->
             <% if (typeof(id) != "undefined") { %>
                 <input type="hidden" id="id" name="id" value="<%= id %>">

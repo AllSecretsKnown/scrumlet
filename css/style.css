@@ -19,3 +19,10 @@ tr.project{
 	margin: 0 0 10px 0;
 }
 
+#errorContainer{
+  display:none;
+}
+
+.error{
+  background-color: #DBA9BD;
+}
