@@ -6,6 +6,7 @@ define(['jquery', 'underscore', 'backbone', 'task'], function($, _, Backbone, Ta
 		//Construct
 		initialize: function(){
 			this.task = new Task();
+			this.listenTo(this.task, 'error', this.renderErrors, this);
 		},
 		
 		//Function to Render View
@@ -20,6 +21,22 @@ define(['jquery', 'underscore', 'backbone', 'task'], function($, _, Backbone, Ta
 			'click #cancel_task': 'unrender'
 		},
 
+		// Function for displaying the current project model errors
+		renderErrors: function(model, errors) {
+			// Grabs the element that errors will be appended to..
+			var formEl = this.$('#errorContainer');
+
+			// ..empty it and then show it
+			formEl.html('').show();
+
+			// Iterate through all errors and append them to the container
+			// Also decorate the input fields in a cute pink color
+			_.each(errors, function(error) {
+				this.$("#" + error.name).parent('label').addClass('error');
+				formEl.prepend(error.message + "<br />");
+			}, this)
+		},
+
 		//Function to unrender from DOM
 		unrender: function(e){
 			e.preventDefault();
@@ -30,13 +47,15 @@ define(['jquery', 'underscore', 'backbone', 'task'], function($, _, Backbone, Ta
 		processInput: function(e){
 			e.preventDefault();
 
-			//Extract input and populate the model
-			this.task.set('task_name', this.$('#task_name').val());
-			this.task.set('task_description', this.$('#task_description').val());
-			this.task.set('task_status', this.$('#task_status').val());
+			formInput = {
+				task_name: this.$('#task_name').val() || '',
+				task_description: this.$('#task_description').val() || '',
+				task_status: this.$('#task_status').val() || ''
+			}
 
-			//Call save task, send the task on by to save
-			this.saveTask(this.task);
+			// Run callBack if model's attributes gets set without validation errors
+			// Else the model's error-event will trigger
+			if (this.task.set(formInput)){this.saveTask(this.task);}
 		},
 
 		//Function to save a new task
