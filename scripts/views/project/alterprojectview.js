@@ -6,7 +6,8 @@ define(['backbone', 'jquery', 'underscore'], function(Backbone, $, _){
 		template: _.template($('#alterProjectTemplate').html() || ""),
 
 		initialize: function(){
-
+			// listen to errors on the current project model
+			this.listenTo(this.model, 'error', this.renderErrors, this);
 		},
 
 		render: function(){
@@ -32,9 +33,27 @@ define(['backbone', 'jquery', 'underscore'], function(Backbone, $, _){
 				p_description: this.$('#p_description').val() || '',
 				p_status: this.$('#p_status').val() || ''
 			};
-			this.clearForm();
-			callBack(data_container, this);
 
+			// Run callBack if model's attributes gets set without validation errors
+			// Else the model's error-event will trigger
+			if (this.model.set(data_container)){callBack(this)}
+		},
+
+		// Function for displaying the current project model errors
+		renderErrors: function(model, errors) {
+			// Grabs the element that errors will be appended to..
+			var formEl = this.$('#errorContainer');
+
+			// ..empty it and then show it
+			formEl.html('').show();
+			
+
+			// Iterate through all errors and append them to the container
+			// Also decorate the input fields in a cute pink color
+			_.each(errors, function(error) {
+				this.$("#" + error.name).parent('label').addClass('error');
+				formEl.prepend(error.message + "<br />");
+			}, this)
 		},
 
 		//Function to set things in motion
@@ -45,22 +64,18 @@ define(['backbone', 'jquery', 'underscore'], function(Backbone, $, _){
 		},
 
 		//Function to delegate response, used as callback when form-input has been fetched
-		delegateResponse: function(data_container, contex){
+		delegateResponse: function(contex){
 			//If ID is NOT UNdefined, update
-			if (typeof(data_container.id) != "undefined") {
-				contex.updateProject(data_container);
+			if (typeof(contex.model.id) != "undefined") {
+				contex.updateProject();
 			//Else create
 			}else{
-				contex.addProject(data_container);
+				contex.addProject();
 			}
-		},
+	},
 
 		//Function to update a model
-		updateProject: function(data_container){
-			this.model.set('id', data_container.id);
-			this.model.set('p_name', data_container.p_name);
-			this.model.set('p_description', data_container.p_description);
-			this.model.set('p_status', data_container.p_status);
+		updateProject: function(){
 			this.collection.update(this.model, {remove: false});
 			
 			//Tell the Project View to re-render the project
@@ -70,8 +85,8 @@ define(['backbone', 'jquery', 'underscore'], function(Backbone, $, _){
 		},
 
 		//Function to create a new model
-		addProject: function(data_container){
-			this.collection.create(data_container, { wait: true });
+		addProject: function(){
+			this.collection.create(this.model, { wait: true });
 			//Tell AppView to un-render the form
 			Backbone.trigger('project:unrenderform');
 		},
@@ -81,6 +96,7 @@ define(['backbone', 'jquery', 'underscore'], function(Backbone, $, _){
 			this.$('#id').val('');
 			this.$('#p_name').val('');
 			this.$('#p_description').val('');
+			this.$('label').removeClass('error');
 		},
 
 		unrenderForm: function(e){
