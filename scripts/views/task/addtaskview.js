@@ -4,8 +4,10 @@ define(['jquery', 'underscore', 'backbone', 'task'], function($, _, Backbone, Ta
 		template: _.template( $('#addTaskTemplate').html() || '' ),
 
 		//Construct
-		initialize: function(){
-			this.task = new Task();
+		initialize: function(opts){
+			// If no task is provided at initialization, create one.
+			this.task = opts && opts.task || new Task();
+
 			this.listenTo(this.task, 'error', this.renderErrors, this);
 		},
 		
