@@ -46,7 +46,7 @@ define(['backbone', 'jquery', 'underscore'], function(Backbone, $, _){
 
 			// ..empty it and then show it
 			formEl.html('').show();
-			
+
 
 			// Iterate through all errors and append them to the container
 			// Also decorate the input fields in a cute pink color
@@ -67,16 +67,16 @@ define(['backbone', 'jquery', 'underscore'], function(Backbone, $, _){
 		delegateResponse: function(contex){
 			//If ID is NOT UNdefined, update
 			if (typeof(contex.model.id) != "undefined") {
-				contex.updateProject();
+				contex.updateProject(contex.model);
 			//Else create
 			}else{
-				contex.addProject();
+				contex.addProject(contex.model);
 			}
 	},
 
 		//Function to update a model
-		updateProject: function(){
-			this.collection.update(this.model, {remove: false});
+		updateProject: function(model){
+			this.collection.update(model, {remove: false});
 			
 			//Tell the Project View to re-render the project
 			this.model.trigger('changed', this);
@@ -85,8 +85,8 @@ define(['backbone', 'jquery', 'underscore'], function(Backbone, $, _){
 		},
 
 		//Function to create a new model
-		addProject: function(){
-			this.collection.create(this.model, { wait: true });
+		addProject: function(model){
+			this.collection.create(model, { wait: true });
 			//Tell AppView to un-render the form
 			Backbone.trigger('project:unrenderform');
 		},
