@@ -33,9 +33,9 @@ define(['jquery', 'underscore', 'backbone', 'task', 'addTaskView'], function($, 
 			e.preventDefault();
 			
 			var proje = this.model.get('project');
-			this.addTaskView = new AddTaskView( { model: proje } );
-			this.addTaskView.task = this.model;
-			this.addTaskView.render();
+			
+			this.addTaskView = new AddTaskView( { model: proje, task: this.model } )
+			.render();
 
 			//Append the form to the DOM
 			$('#new_task_div').empty().append( this.addTaskView.el );
