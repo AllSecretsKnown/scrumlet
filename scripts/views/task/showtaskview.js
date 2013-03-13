@@ -23,9 +23,10 @@ define(['jquery', 'underscore', 'backbone', 'task', 'addTaskView'], function($, 
 		deleteTask: function(e){
 			e.preventDefault();
 			//Destroy the model, wil trigger destroy event
-			var proje = this.model.get('project');
-			proje.get('tasks').get(this.model).destroy();
-			proje.save();
+			var project = this.model.get('project');
+			project.get('tasks').get(this.model).destroy();
+			project.save();
+			Backbone.trigger('show:message', { header: "Success!", text: "Task was deleted." });
 		},
 
 		//Function to render Update form on specific task

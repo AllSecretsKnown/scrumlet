@@ -31,6 +31,9 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 			//Listen for Project saved event, remove form
 			//TODO: Show Feedback to user
 			Backbone.on('project:unrenderform', this.clearForm, this );
+
+			//Listen for messages, inject Message object
+			Backbone.on('show:message', this.showMessage, this );
 		},
 
 		//##Show main page
@@ -83,6 +86,27 @@ define(['backbone', 'jquery', 'underscore', 'project', 'projectsView', 'alterPro
 		//###Function to clear form
 		clearForm: function(){
 			this.$('.alter_project_div').remove();
+		},
+
+		//##Shows messages to user
+		showMessage: function (message) {
+			var messageBox = $(document.createElement('div')),
+				header = $(document.createElement('h2')),
+				text = $(document.createElement('p')),
+				flashContaier = $(".flash-container");
+
+			messageBox.attr('class', 'messageBox');
+
+			messageBox.append(header.html(message.header));
+			messageBox.append(text.html(message.text));
+
+			flashContaier.append(messageBox);
+
+			setTimeout(function () {
+				messageBox.fadeOut('slow', function () {
+					messageBox.remove();
+				});
+			}, 2500);
 		}
 	});
 

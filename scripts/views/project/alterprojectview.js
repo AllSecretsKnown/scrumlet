@@ -80,6 +80,8 @@ define(['backbone', 'jquery', 'underscore'], function(Backbone, $, _){
 			
 			//Tell the Project View to re-render the project
 			this.model.trigger('changed', this);
+
+			Backbone.trigger('show:message', { header: "Success!", text: "Project has been updated."});
 			//Tell AppView to un-render the form
 			Backbone.trigger('project:unrenderform');
 		},
@@ -87,6 +89,8 @@ define(['backbone', 'jquery', 'underscore'], function(Backbone, $, _){
 		//Function to create a new model
 		addProject: function(model){
 			this.collection.create(model, { wait: true });
+
+			Backbone.trigger('show:message', { header: "Success!", text: "Project has been created." });
 			//Tell AppView to un-render the form
 			Backbone.trigger('project:unrenderform');
 		},
