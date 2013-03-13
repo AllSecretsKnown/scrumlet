@@ -26,3 +26,32 @@ tr.project{
 .error{
   background-color: #DBA9BD;
 }
+
+.flash-container{
+    position: fixed;
+    left: 35%;
+    width: 300px;
+    top: 60px;
+}
+
+.messageBox{
+    text-align: center;
+    padding: 0 10px 0 10px;
+    width: 100%;
+    background-color: #333333;
+    color: #fff;
+    font-family: "helveticaneue-light";
+}
+.messageBox h2{
+    margin: 0 5px 0 0;
+    font-size: 0.8em;
+    padding: 0;
+    display: inline-block;
+}
+
+.messageBox p{
+    margin: 0;
+    padding: 0;
+    font-size: 0.8em;
+    display: inline-block;
+}

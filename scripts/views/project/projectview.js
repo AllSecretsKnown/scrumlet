@@ -33,6 +33,7 @@ define(['backbone', 'jquery', 'underscore'], function(Backbone, $, _){
 		deleteProject: function(){
 			//Destroy the model, wil trigger destroy event
 			this.model.destroy();
+			Backbone.trigger('show:message', { header: "Success!", text: "Project has been deleted." });
 		},
 
 		//Function to unrender a delete project
