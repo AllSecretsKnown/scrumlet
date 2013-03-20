@@ -64,6 +64,7 @@ define(['jquery', 'underscore', 'backbone', 'task'], function($, _, Backbone, Ta
 		//Takes a task as param, makes it testable
 		saveTask: function(task){
 			this.model.trigger('add:task', task);
+			Backbone.trigger('show:message', { header: "Success!", text: "Task was saved." })
 		}
 	});
 });
